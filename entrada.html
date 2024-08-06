@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site de Terapia</title>
+    <style>
+        body {
+
+ font-family: Arial, sans-serif;
+            background-color: #e0d1ff; /* Roxo claro para o fundo */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #tela-inicial {
+            text-align: center;
+            background-color: #ffffff; /* Roxo mais escuro para o fundo do conteúdo */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #7c3aed; /* Roxo mais escuro para o título */
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #7c3aed; /* Roxo mais escuro para o botão */
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #5a2d8b; /* Roxo mais escuro com matiz mais claro para o hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Tela Inicial -->
+    <section id="tela-inicial">
+        <h1>Bem-vindo ao Ânima</h1>
+        <button id="criar-conta-btn">Criar uma conta</button>
+        <button id="entrar-btn">Entrar com conta já existente</button>
+    </section>
+
+    <script>
+        // Adicionando evento de clique aos botões
+        document.getElementById('criar-conta-btn').addEventListener('click', function() {
+            window.location.href = 'signin.html'; // Redireciona para a página de Sign In (Cadastro)
+        });
+
+        document.getElementById('entrar-btn').addEventListener('click', function() {
+            window.location.href = 'login.html'; // Redireciona para a página de Log In (Login)
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tabela Psicológica</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #e0d1ff; /* Roxo claro para o fundo */
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 60%;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+      width: 25%;
+    }
+
+    th {
+      background-color: #7c3aed; /* Roxo mais escuro para os cabeçalhos */
+      color: white;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    td {
+      background-color: #f0eaff; /* Roxo mais claro para as células */
+      white-space: pre-wrap;
+      word-break: break-all;
+      vertical-align: top;
+    }
+
+    .definitions-container {
+      margin-top: 20px;
+    }
+
+    .definition {
+      background-color: rgba(124, 58, 237, 0.9);
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-top: none;
+      max-height: 2em;
+      overflow: hidden;
+      border-radius: 5px;
+      color: white;
+      margin-bottom: 10px;
+      margin: 0 auto;
+      text-align: center;
+      width: 90%;
+      display: none;
+      font-size: 0.8em; /* Diminui o tamanho da fonte */
+    }
+
+
+    .continue-button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 8px 16px;
+      background-color: #7c3aed; /* Roxo mais escuro para o botão */
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .continue-button:hover {
+      background-color: #7c3aed; /* Roxo mais escuro com matiz mais claro para o hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <table>
+      <thead>
+        <tr>
+          <th data-definition="situation">Situação</th>
+          <th data-definition="automatic">Pensamento Automático</th>
+          <th data-definition="alternative">Pensamento Alternativo</th>
+          <th data-definition="conclusion">Conclusão</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td contenteditable="true" class="editable-cell"></td>
+          <td contenteditable="true" class="editable-cell"></td>
+          <td contenteditable="true" class="editable-cell"></td>
+          <td contenteditable="true" class="editable-cell"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="definitions-container">
+      <div class="definition" id="situation-definition">
+        Contexto específico em que um comportamento ou evento ocorre.
+      </div>
+      <div class="definition" id="automatic-definition">
+        Resposta rápida e involuntária que ocorre em resposta a uma situação. 
+      </div>
+      <div class="definition" id="alternative-definition">
+        Abordagem consciente e deliberada para substituir pensamentos automáticos por outras perspectivas mais realista.
+      </div>
+      <div class="definition" id="conclusion-definition">
+        Fechamento que resume e encerra um assunto, apresentando uma visão final.
+      </div>
+    </div>
+
+    <a href="esquemasII.html" class="continue-button">Concluir Análise</a>
+  </div>
+
+  <script>
+    const definitionSpans = document.querySelectorAll('th');
+    const definitions = {
+      situation: document.getElementById('situation-definition'),
+      automatic: document.getElementById('automatic-definition'),
+      alternative: document.getElementById('alternative-definition'),
+      conclusion: document.getElementById('conclusion-definition')
+    };
+
+    definitionSpans.forEach(th => {
+      th.addEventListener('click', (event) => {
+        const definitionId = event.target.dataset.definition;
+        const definition = definitions[definitionId];
+        if (definition.style.display === 'block') {
+          definition.style.display = 'none';
+        } else {
+          Object.values(definitions).forEach(def => {
+            def.style.display = 'none';
+          });
+          definition.style.display = 'block';
+        }
+      });
+    });
+
+    const editableCells = document.querySelectorAll('.editable-cell');
+
+    editableCells.forEach(cell => {
+      cell.addEventListener('input', () => {
+        cell.style.height = 'auto';
+        cell.style.height = (cell.scrollHeight) + 'px';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pensamentos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #e0d1ff; /* Roxo claro para o fundo */
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center; /* Centraliza na vertical e horizontal */
+      height: 100vh;
+    }
+
+    #schemaForm {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      box-sizing: border-box;
+    }
+
+    #container {
+      display: flex;
+      gap: 10px; /* Adjust the gap between sections */
+    }
+
+    .section {
+      width: 500px; /* Set a fixed width for the sections */
+      background-color: #fff; /* Light purple background for sections */
+      border-radius: 8px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center; /* Center align content */
+      position: relative; /* Set relative positioning for sections */
+    }
+
+    #meanings {
+      width: 275px; /* Set a slightly narrower width for the meanings section */
+    }
+
+    #goToTableBtn {
+      position: absolute; /* Set absolute positioning for the button */
+      bottom: 10px; /* Align the button to the bottom */
+      left: 50%; /* Center the button horizontally */
+      transform: translateX(-50%); /* Center the button horizontally */
+      background-color: #7c3aed; /* Light purple background for the button */
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: fit-content; /* Set width to fit its content */
+    }
+
+    h1 {
+      color: #7c3aed; /* Roxo mais escuro para o título */
+      margin-bottom: 20px;
+    }
+
+    .option-wrapper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .option-wrapper input[type="checkbox"] {
+      margin-right: 5px;
+    }
+
+    .option {
+      color: #5a2d8b; /* Roxo mais escuro para o texto da opção */
+      cursor: pointer;
+    }
+
+    .option:hover {
+      text-decoration: underline;
+    }
+
+    .definition {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #7c3aed; /* Roxo mais escuro para o fundo da definição */
+      border-radius: 4px;
+      display: none; /* Alterado para inicialmente oculto */
+      color: #fff; /* Cor do texto */
+    }
+
+    .active {
+      display: block !important; /* Alterado para forçar a exibição */
+    }
+
+    #definitions {
+      overflow-y: auto; /* Nova para adicionar scroll caso necessário */
+      max-height: 400px; /* Nova para limitar a altura */
+    }
+
+    #goToTableBtn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #7c3aed; /* Roxo mais escuro para o botão */
+      color: #fff;
+      text-decoration: none;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #goToTableBtn:hover {
+      background-color: #7c3aed; /* Roxo mais escuro com matiz mais claro para o hover */
+    }
+  </style>
+</head>
+<body>
+
+<div id="container">
+  <div class="section">
+    <h1>Pensamentos</h1>
+    <form id="schemaForm">
+      <div class="option-wrapper">
+        <input type="checkbox" id="Dicotômico" name="schema" value="Dicotômico">
+        <label class="option" for="Dicotômico">Dicotômico</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="Previsão do Futuro" name="schema" value="Previsão do Futuro">
+        <label class="option" for="Previsão do Futuro">Previsão do Futuro</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="Desqualificação" name="schema" value="Desqualificação">
+        <label class="option" for="Desqualificação">Desqualificação</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="Raciocínio emocional" name="schema" value="Raciocínio emocional">
+        <label class="option" for="Raciocínio emocional">Raciocínio emocional</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="Rotulação" name="schema" value="Rotulação">
+        <label class="option" for="Rotulação">Rotulação</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="Ampliação/Minimização" name="schema" value="Ampliação/Minimização">
+        <label class="option" for="Ampliação/Minimização">Ampliação/Minimização</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="Abstração seletiva" name="schema" value="Abstração seletiva">
+        <label class="option" for="Abstração seletiva">Abstração seletiva</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="Leitura mental" name="schema" value="Leitura mental">
+        <label class="option" for="Leitura mental">Leitura mental</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="Supergeneralização" name="schema" value="Supergeneralização">
+        <label class="option" for="Supergeneralização">Supergeneralização</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="Personalização" name="schema" value="Personalização">
+        <label class="option" for="Personalização">Personalização</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="Suposição" name="schema" value="Suposição">
+        <label class="option" for="Suposição">Suposição</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="Conclusões_precipitadas" name="schema" value="Conclusões_precipitadas">
+        <label class="option" for="Conclusões_precipitadas">Conclusões precipitadas</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="Culpar" name="schema" value="Culpar">
+        <label class="option" for="Culpar">Culpar</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="E_se...?" name="schema" value="E_se...?">
+        <label class="option" for="E_se...?">E se...?</label>
+      </div>
+      <div class="option-wrapper">
+        <input type="checkbox" id="Comparações_injustas" name="schema" value="Comparações_injustas">
+        <label class="option" for="Comparações_injustas">Comparações injustas</label>
+      </div>
+    </form>
+  </div>
+
+  <div class="section" id="meanings">
+    <h1>Significados</h1>
+    <div id="definitions">
+      <p id="DicotômicoDefinition" class="definition">
+        Vejo a situação, a pessoa ou o acontecimento apenas em termos de "uma coisa ou outra", colocando-as em duas categorias extremas, ao invés de contínuas. Também pode ser chamado de "tudo ou nada".
+      </p>
+      <p id="Previsão do FuturoDefinition" class="definition">
+        Antecipo o futuro em termos negativos e acredito que o que acontecerá será tão horrível que não vou suportar.
+      </p>
+      <p id="DesqualificaçãoDefinition" class="definition">
+        Desqualifico e desconto os aspectos positivos, insistindo que estes não contam.
+      </p>
+      <p id="Raciocínio emocionalDefinition" class="definition">
+        Acredito que minhas emoções refletem o que as coisas realmente são e deixo que elas guiem minhas emoções e pensamentos.
+      </p>
+      <p id="RotulaçãoDefinition" class="definition">
+        Coloco um rótulo fixo, global, e geralmente negativo em mim ou nos outros.
+      </p>
+      <p id="Ampliação/MinimizaçãoDefinition" class="definition">
+        Avalio a mim mesmo, os outros e as situações ampliando os aspectos negativos/minimizando os aspectos positivos.
+      </p>
+      <p id="Abstração seletivaDefinition" class="definition">
+        Presto atenção em um ou poucos detalhes e não consigo ver a situação por completo.
+      </p>
+      <p id="Leitura mentalDefinition" class="definition">
+        Acredito que conheço os pensamentos e intenções dos outros (ou que eles conhecem meus pensamentos e intenções) sem ter evidências suficientes.
+      </p>
+      <p id="SupergeneralizaçãoDefinition" class="definition">
+        Eu tomo casos negativos isolados e os generalizo, tornando-os um padrão interminável com uso repetido de palavras como "sempre", "nunca", "tudo". 
+      </p>
+      <p id="PersonalizaçãoDefinition" class="definition">
+        Assumo que comportamentos dos outros e eventos externos dizem respeito ou são direcionados a mim, sem considerar outras explicações plausíveis.  
+      </p>
+      <p id="SuposiçãoDefinition" class="definition">
+        Digo a mim mesmo que os acontecimentos e/ou comportamentos de outras pessoas e minhas próprias atitudes deveriam ser da forma que espero que sejam e não o que de fato são.  
+      </p>
+      <p id="Conclusões_precipitadasDefinition" class="definition">
+        Tiro conclusões (negativas ou positivas) a partir de nenhuma ou pouca evidência que possa confirmá-las.  
+      </p>
+      <p id="CulparDefinition" class="definition">
+        Dirijo minha atenção aos outros como fontes dos meus sentimentos e experiências, deixando de considerar minha própria responsabilidade; ou, inversamente, tomo para mim mesmo a responsabilidade pelos comportamentos dos outros.  
+      </p>
+      <p id="E_se...?Definition" class="definition">
+        Fico me perguntando "e se acontecer tal coisa?", deixando de tomar ou não atitudes responsivas.  
+      </p>
+      <p id="Comparações_injustasDefinition" class="definition">
+        Comparo-me com outras pessoas que parecem se sair melhor do que eu, me colocando em uma posição de desvantagem.  
+      </p>
+    </div>
+    <div>
+      <a id="goToTableBtn" href="tabela.html">Ir para a tabela</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const options = document.querySelectorAll('.option');
+    const definitions = document.querySelectorAll('.definition');
+
+    options.forEach(option => {
+      option.addEventListener('click', function() {
+        // Remove a classe 'active' de todas as definições
+        definitions.forEach(definition => {
+          definition.classList.remove('active');
+        });
+
+        // Remove a classe 'active' de todos os checkboxes
+        options.forEach(opt => {
+          if (opt !== option) {
+            opt.checked = false;
+          }
+        });
+
+        // Obtém o ID da definição correspondente ao clique
+        const definitionId = option.getAttribute('for') + 'Definition';
+
+        // Adiciona a classe 'active' à definição correspondente
+        const targetDefinition = document.getElementById(definitionId);
+        targetDefinition.classList.add('active');
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
